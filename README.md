@@ -93,3 +93,23 @@
     1. Lot 1 has a true mean of 1,500 and a p-Value of 1. Therefore, there is no sufficient evidence to reject the null hypothesis that there is no statistical difference between the mean value of this subset and the presumed population mean value of 1,500
     2. Lot 2 has a true mean of 1,500.02 and a p-Value of about 0.61. Similar to Lot 1, the null hypothesis cannot be rejected and there is no statistical difference between the observed mean value and the presumed one.
     3. Lot 3 has a true mean of 1496.14 and a p-Value of 0.04, which is lower than the commonly assumed significane level of 0.05. The number is a fair ground to reject the null hypothesis and determine that there is a statistically difference between the sample mean and the presumed population mean.
+
+
+## Study Design: MechaCar vs Competition
+There are a lot of factors that future car-buyers will take into account when they are planning on making one of the bigger purchases in their life. Although many components could come into play in this scenario, I would say the price of the vehicle probably tops all other thoughts. With that said, I would argue the purchasing price of a MechaCar's vehicle would be the dependent variable we'd measure against that of the competitors according to the following metrics:
+
+### Metrics
+* Gas Efficiency (mile/gallon or kilometer/liter)
+* Maintenance Cost ($)
+* Trim (low, medium, high)
+* Engine (EV, Hybrid, Gas, or Diesel)
+* Resale Value ($)
+* Safety Feature (bad, acceptable, satisfactory, or excellent)
+
+### Hypothesis
+With these factors from MechCar and its competitors, we can set the hypotheses like this:
+* Null Hypothesis (H<sub>0</sub>): Purchasing price of MechaCar's vehicles is similar to that of competitor's vehicles on its performance of key factors
+* Alternative Hypothesis (H<sub>a</sub>): Purchasing price of MechaCar's vehicles is NOT similar to that of competitor's vehicles on its performance of key factors
+
+### Statistical Test
+The best statistical test for this study would be two sample t-tests to compare the prices of both automotive companies based on the indepndent variables/metrics listed above.
