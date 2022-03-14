@@ -44,12 +44,29 @@
 ![](Resources/lot_summary.png)
 
 ### Result
-Understanding that the design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch, we are to answer the following question:
+* Understanding that the design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch, we are to answer the following question:
 > Does the current manufacturing data meet the design specification for all manufacturing lots in total and each lot individually? Why or why not?
 
-From the `total_summary` dataframe, the variance of the coils is 62.29 PSI, which is well under the 100 PSI requirement. When looking at the individual lot in the `lot_summary` dataframe, it is observed that Lot 1 and Lot 2 are well within the 100 PSI varaince requirement; Lot 1 with 0.98 and Lot 2 with 7.47 as their variance. In contrast, the variance value of 170.29 for Lot 3 is well above the requirement value. So it can be deduced that Lot 3 is increasing the variance value at the full lot level.
+* From the `total_summary` dataframe, the variance of the coils is 62.29 PSI, which is well under the 100 PSI requirement. When looking at the individual lot in the `lot_summary` dataframe, it is observed that Lot 1 and Lot 2 are well within the 100 PSI varaince requirement; Lot 1 with 0.98 and Lot 2 with 7.47 as their variance. In contrast, the variance value of 170.29 for Lot 3 is well above the requirement value. So it can be deduced that Lot 3 is increasing the variance value at the full lot level.
 
-The following boxplot shows how Lot 3 causes inconsistency in PSI:
+* The following boxplot shows how Lot 3 causes inconsistency in PSI:
+
 > plt <- ggplot(suspensionData, aes(x=Manufacturing_Lot, y=PSI))
+
 > plt + geom_boxplot()
+
 ![](Resources/boxplot.png)
+
+
+## T-Tests on Suspension Coils
+
+## Analysis
+* For this section, we are to perform t-tests to determine if all manufacturing lots and each lot individually are statistically different from the population mean of 1,500 pounds per square inch.
+
+* An R code for t-test that compares all manufacturing lots against the presumed population mean of 1,500 PSI
+> t.test(suspensionData$PSI, mu=1500)
+
+The following is a summary of the t-test results across **all manufacturing lots**
+![](Resources/t_test_pop.png)
+
+From this result, it can be observed that the **true mean is 1498.78**. This is the same number we saw for the mean value in `total_summary` dataframe. Here, we have 0.06 as a p-Value and it is higher than the assumed significance level of 0.05. Therefore, it can be determined that there is `no sufficient` evidence to reject the null hypothesis. In other words, the mean of all three of the manufacturing lots is statistically similar to the presumed population mean of 1,500.

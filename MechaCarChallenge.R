@@ -37,3 +37,9 @@ show(lot_summary)
 #box plot for each lot's PSI
 plt <- ggplot(suspensionData, aes(x=Manufacturing_Lot, y=PSI))
 plt + geom_boxplot()
+
+
+#perform t.test() to determine if the PSI across ALL lots is statistically different from the population mean of 1,500 PSI
+t.test(suspensionData$PSI, mu=1500)
+
+lot1 <- subset(suspensionData, )
