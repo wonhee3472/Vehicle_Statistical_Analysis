@@ -29,14 +29,27 @@
 * The R-sqaured value is 0.7149 and it means that about 71-72% of all mpg predictions could be determined by this model. This is a  relatively high percentage so it can be deduced that this multiple regression model `does predict mpg of MechaCar prototypes quite effectively`.
 
 
-## Visualizations for the Trip Analysis
+## Summary Statistics on Suspension Coils
 
 ### Analysis
 * `Suspension_Coil.csv` was imported and read into a dataframe
     > suspensionData <- read.csv(file="Resources/Suspension_Coil.csv",check.names=F,stringsAsFactors = F)
+
 * An R code to create a total summary dataframe with the mean, median, variance, and standard deviation of the PSI for all manufacturing lots
     > total_summary <- suspensionData %>% summarize(Mean_PSI=mean(PSI), Median_PSI=median(PSI), Var_PSI=var(PSI), Std_Dev_PSI=sd(PSI), .groups='keep')
-    > ![](Resources/total_summary.png)
+![](Resources/total_summary.png)
+
 * An R code to create a lot summary dataframe that has the mean, median, variance, and standard deviation for each manufacturing lot
     > lot_summary <- suspensionData %>% group_by(Manufacturing_Lot) %>% summarize(Mean_PSI=mean(PSI), Median_PSI=median(PSI), Var_PSI=var(PSI), Std_Dev_PSI=sd(PSI, .groups='keep')
-    > ![](Resources/lot_summary.png)
+![](Resources/lot_summary.png)
+
+### Result
+Understanding that the design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch, we are to answer the following question:
+> Does the current manufacturing data meet the design specification for all manufacturing lots in total and each lot individually? Why or why not?
+
+From the `total_summary` dataframe, the variance of the coils is 62.29 PSI, which is well under the 100 PSI requirement. When looking at the individual lot in the `lot_summary` dataframe, it is observed that Lot 1 and Lot 2 are well within the 100 PSI varaince requirement; Lot 1 with 0.98 and Lot 2 with 7.47 as their variance. In contrast, the variance value of 170.29 for Lot 3 is well above the requirement value. So it can be deduced that Lot 3 is increasing the variance value at the full lot level.
+
+The following boxplot shows how Lot 3 causes inconsistency in PSI:
+> plt <- ggplot(suspensionData, aes(x=Manufacturing_Lot, y=PSI))
+> plt + geom_boxplot()
+![](Resources/boxplot.png)
